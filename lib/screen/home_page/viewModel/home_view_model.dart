@@ -10,9 +10,7 @@ final homeViewModel = ChangeNotifierProvider<HomeViewModel>((ref) {
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel() {
     _changeLoadingStatus(true);
-    GlobalVars.apiService
-        .getData('characters?ts=1&apikey=d247358bca33485534faf5e699725c95&hash=f42f55ea6acd4933686aacd9f75fe6c7')
-        .then((value) {
+    GlobalVars.apiService.getData(GlobalVars.serviceConst.getCharacterPath).then((value) {
       var _tempList = _convertToList(value?.data);
       fillCharacterList(_tempList);
     }).whenComplete(() => _changeLoadingStatus(false));
@@ -29,14 +27,23 @@ class HomeViewModel extends ChangeNotifier {
   //searching
   final TextEditingController controller = TextEditingController();
   var searchList = [];
+  bool notFound = false;
 
   void search(String searchWord) {
-    searchList = [];
+    searchList.clear();
     for (var element in characters) {
-      if ((element as CharacterModel).toJson().containsValue(searchWord)) {
-        searchList.add(element);
-      }
+      (element as CharacterModel).toJson().values.forEach((value) {
+        if (value.toString().contains(searchWord)) {
+          searchList.contains(element) ? null : searchList.add(element);
+        }
+      });
     }
+    if (controller.text.isNotEmpty && searchList.isEmpty) {
+      notFound = true;
+    } else {
+      notFound = false;
+    }
+
     notifyListeners();
   }
 

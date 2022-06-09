@@ -36,19 +36,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   #Singleton
   get_it: ^7.2.0
-
   #Time Funcs
   intl: ^0.17.0
-
   #Modelling
   json_serializable: ^6.2.0
   #Network
-  http: ^0.13.4
-  dio:
-
+  dio: ^4.0.6
   #State Management
   flutter_riverpod: ^1.0.3
-
 
 dev_dependencies:
   flutter_test:

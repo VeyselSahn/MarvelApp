@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:path_task/component/component_shelf.dart';
 
 import '../../core_shelf.dart';
 
@@ -10,5 +11,6 @@ class Locators {
   void setUpLocators() {
     getIt.registerLazySingleton(() => ApiService());
     getIt.registerLazySingleton(() => NavigationService());
+    getIt.registerLazySingleton(() => ServiceConsant());
   }
 }

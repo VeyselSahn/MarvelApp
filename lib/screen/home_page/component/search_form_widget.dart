@@ -13,7 +13,8 @@ class SearchFormWidget extends ConsumerWidget {
       width: context.deviceWidth * .8,
       child: TextFormField(
         controller: viewModel.controller,
-        onChanged: (value) => viewModel.search(value),
+        onChanged: (value) async =>
+            await Future.delayed(const Duration(seconds: 1)).then((x) => viewModel.search(value)),
         decoration: const InputDecoration(border: OutlineInputBorder(), hintText: 'Search character'),
       ),
     );

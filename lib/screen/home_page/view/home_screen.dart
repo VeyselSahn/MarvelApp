@@ -40,7 +40,11 @@ class HomeScreen extends ConsumerWidget {
             // ignore: prefer_const_constructors
             child: viewModel.loading
                 ? loadingWidget()
-                : characterGridView(viewModel.searchList.isEmpty ? viewModel.characters : viewModel.searchList),
+                : viewModel.notFound
+                    ? const Center(
+                        child: Text('Character couldnt found'),
+                      )
+                    : characterGridView(viewModel.searchList.isEmpty ? viewModel.characters : viewModel.searchList),
           )
         ],
       ),
