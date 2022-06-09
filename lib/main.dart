@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return ProviderScope(
       child: MaterialApp(
         title: 'Marvel App',
-        key: GlobalVars.navigationService.navigatorKey,
+        navigatorKey: GlobalVars.navigationService.navigatorKey,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

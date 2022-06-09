@@ -10,7 +10,7 @@ final homeViewModel = ChangeNotifierProvider<HomeViewModel>((ref) {
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel() {
     _changeLoadingStatus(true);
-    GlobalVars.apiService.getData(GlobalVars.serviceConst.getCharacterPath).then((value) {
+    GlobalVars.apiService.getData(GlobalVars.serviceConst.prepareCharactersPath(500)).then((value) {
       var _tempList = _convertToList(value?.data);
       fillCharacterList(_tempList);
     }).whenComplete(() => _changeLoadingStatus(false));
@@ -24,6 +24,7 @@ class HomeViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  List get gridList => searchList.isEmpty ? characters : searchList;
   //searching
   final TextEditingController controller = TextEditingController();
   var searchList = [];
