@@ -20,7 +20,7 @@ class HomeViewModel extends ChangeNotifier {
 
   Future getCharacters(int customOffSet) async {
     _changeLoadingStatus(true);
-    GlobalVars.apiService.getData(GlobalVars.serviceConst.prepareCharactersPath(customOffSet)).then((value) {
+    await GlobalVars.apiService.getData(GlobalVars.serviceConst.prepareCharactersPath(customOffSet)).then((value) {
       var _tempList = _convertToList(value?.data);
       fillCharacterList(_tempList);
     }).whenComplete(() => _changeLoadingStatus(false));

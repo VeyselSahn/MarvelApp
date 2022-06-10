@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../component/widgets/appbar.dart';
-import '../../../component/widgets/snackbar.dart';
-import '../../../core/core_shelf.dart';
 import '../component/search_form_widget.dart';
 import '../viewModel/home_view_model.dart';
 import '../component/character_gridview.dart';

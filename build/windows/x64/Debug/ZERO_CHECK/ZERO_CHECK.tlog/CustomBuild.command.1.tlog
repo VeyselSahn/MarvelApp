@@ -1,0 +1,10 @@
+^D:\PATH_TASK\BUILD\WINDOWS\CMAKEFILES\33F47ECF17ED96D85FD8B782D5E78744\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/path_task/windows -BD:/path_task/build/windows --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/path_task/build/windows/path_task.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
