@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:path_task/component/widgets/snackbar.dart';
 import 'package:path_task/core/core_shelf.dart';
 import 'package:path_task/screen/home_page/component/search_form_widget.dart';
 import 'package:path_task/screen/home_page/viewModel/home_view_model.dart';
@@ -15,11 +16,12 @@ class HomeScreen extends ConsumerWidget {
     var viewModel = ref.watch(homeViewModel);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        elevation: 0,
-        centerTitle: true,
-        title: SvgPicture.asset(
-          'marvel_logo'.svgImagePath,
+        title: InkWell(
+          onTap: () => snackbar('Deneme 1 2 3 '),
+          child: const Text(
+            'MARVEL',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 24),
+          ),
         ),
       ),
       body: RefreshIndicator(

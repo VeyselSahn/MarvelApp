@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path_task/screen/detail_page/model/comic_model.dart';
 import 'package:path_task/screen/detail_page/viewModel/detail_view_model.dart';
 
 class ComicsWidget extends ConsumerWidget {
@@ -8,16 +9,11 @@ class ComicsWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var viewModel = ref.watch(detailViewModel);
+    var viewModel = ref.read(detailViewModel);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Comics',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-            )),
+        Text('Comics', style: Theme.of(context).textTheme.subtitle2),
         const SizedBox(
           height: 10,
         ),
@@ -31,27 +27,31 @@ class ComicsWidget extends ConsumerWidget {
               }
               return ListView.builder(
                 itemCount: viewModel.comics.length,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemBuilder: (context, index) => SizedBox(
-                  height: 80,
-                  child: ListTile(
-                    shape: const RoundedRectangleBorder(
-                        side: BorderSide(
-                      color: Colors.white,
-                    )),
-                    leading: Image.network(viewModel.comics.elementAt(index).photoUrl, fit: BoxFit.cover),
-                    title: Text(viewModel.comics.elementAt(index).title),
-                    subtitle: Text(
-                      viewModel.comics.elementAt(index).description,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    trailing: Text(viewModel.comics.elementAt(index).date.toString()),
-                  ),
-                ),
+                itemBuilder: (context, index) => comicTileWidget(viewModel.comics.elementAt(index)),
               );
             }),
       ],
+    );
+  }
+
+  SizedBox comicTileWidget(ComicModel model) {
+    return SizedBox(
+      height: 80,
+      child: ListTile(
+        shape: const RoundedRectangleBorder(
+            side: BorderSide(
+          color: Colors.white,
+        )),
+        leading: Image.network(model.photoUrl!, fit: BoxFit.cover),
+        title: Text(model.title!),
+        subtitle: Text(
+          model.description!,
+          overflow: TextOverflow.ellipsis,
+        ),
+        trailing: Text(model.date.toString()),
+      ),
     );
   }
 }

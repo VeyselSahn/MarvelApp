@@ -1,6 +1,6 @@
 class ServiceConsant {
   String baseUrl = 'http://gateway.marvel.com/v1/public/';
-  final String _hash = 'hash=f42f55ea6acd4933686aacd9f75fe6c7';
+  final String _hash = 'hash=7909f120c50fca5d90540465b71a73bd';
   final String _publicKey = 'apikey=75d295aeb549a8cbedd82626285d6d48';
   final String _ts = 'ts=1';
 

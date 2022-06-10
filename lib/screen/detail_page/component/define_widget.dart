@@ -17,7 +17,6 @@ class DefineWidget extends StatelessWidget {
         Container(
             height: context.deviceHeight * .45,
             decoration: BoxDecoration(
-              color: Colors.red.shade800,
               image: DecorationImage(
                   image: NetworkImage(
                     model.photoUrl!,
@@ -32,7 +31,7 @@ class DefineWidget extends StatelessWidget {
         Center(
           child: Text(
             model.name!,
-            style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w700),
+            style: Theme.of(context).textTheme.headline6,
           ),
         ),
         const SizedBox(
@@ -41,24 +40,18 @@ class DefineWidget extends StatelessWidget {
         ExpansionTile(
           tilePadding: EdgeInsets.zero,
           initiallyExpanded: true,
-          title: const Text(
+          title: Text(
             'Explaine yourself',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
-            ),
+            style: Theme.of(context).textTheme.subtitle2,
           ),
           children: [
             Text(
               model.description!,
-              style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400),
+              style: Theme.of(context).textTheme.subtitle1,
             ),
           ],
         ),
-        const Divider(
-          color: Colors.white,
-        )
+        const Divider()
       ],
     );
   }

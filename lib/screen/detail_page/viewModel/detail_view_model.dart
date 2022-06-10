@@ -24,7 +24,7 @@ class DetailViewModel extends ChangeNotifier {
       var _tempList = _convertToList(_resp?.data ?? []);
       fillComicsList(_tempList);
       return true;
-    } on Exception catch (e) {
+    } on Exception {
       return false;
     }
   }

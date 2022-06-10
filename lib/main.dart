@@ -17,9 +17,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Marvel App',
         navigatorKey: GlobalVars.navigationService.navigatorKey,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: defaultTheme,
         debugShowCheckedModeBanner: false,
         home: const HomeScreen(),
       ),

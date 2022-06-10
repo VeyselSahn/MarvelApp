@@ -11,24 +11,27 @@ class DetailScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: const Color.fromRGBO(226, 54, 54, 1),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-          child: ListView(
-            children: [
-              DefineWidget(
-                model: model,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              ComicsWidget(
-                characterID: model.id!,
-              )
-            ],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'DETAİLS',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 24),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        child: ListView(
+          children: [
+            DefineWidget(
+              model: model,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ComicsWidget(
+              characterID: model.id!,
+            )
+          ],
         ),
       ),
     );
