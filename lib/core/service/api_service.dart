@@ -8,7 +8,7 @@ class ApiService {
     try {
       return await base.get(path);
     } catch (e) {
-      snackbar('Error: ' + e.toString());
+      snackbar('Throwed an error in service');
       throw Exception(e);
     }
   }
