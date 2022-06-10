@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_task/core/core_shelf.dart';
@@ -9,22 +11,58 @@ final homeViewModel = ChangeNotifierProvider<HomeViewModel>((ref) {
 
 class HomeViewModel extends ChangeNotifier {
   HomeViewModel() {
-    _changeLoadingStatus(true);
-    GlobalVars.apiService.getData(GlobalVars.serviceConst.prepareCharactersPath(500)).then((value) {
-      var _tempList = _convertToList(value?.data);
-      fillCharacterList(_tempList);
-    }).whenComplete(() => _changeLoadingStatus(false));
+    getCharacters(0);
+    listenScroll();
   }
 
   bool loading = false;
   List<dynamic> characters = [];
+  List get gridList => searchList.isEmpty ? characters : searchList;
+
+  Future getCharacters(int customOffSet) async {
+    _changeLoadingStatus(true);
+    GlobalVars.apiService.getData(GlobalVars.serviceConst.prepareCharactersPath(customOffSet)).then((value) {
+      var _tempList = _convertToList(value?.data);
+      fillCharacterList(_tempList);
+    }).whenComplete(() => _changeLoadingStatus(false));
+  }
 
   void fillCharacterList(List<dynamic> newList) {
     characters = newList;
     notifyListeners();
   }
 
-  List get gridList => searchList.isEmpty ? characters : searchList;
+  final ScrollController scrollController = ScrollController();
+
+  void listenScroll() {
+    scrollController.addListener(() async {
+      if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+        // for be sure
+        await Future.delayed(const Duration(seconds: 1)).whenComplete(() {
+          if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+            changeOffSet(true);
+            getCharacters(offset);
+          }
+        });
+      }
+
+      if (scrollController.position.pixels == scrollController.position.minScrollExtent) {
+        await Future.delayed(const Duration(seconds: 1)).whenComplete(() {
+          if (scrollController.position.pixels == scrollController.position.minScrollExtent) {
+            changeOffSet(false);
+            getCharacters(offset);
+          }
+        });
+      }
+    });
+  }
+
+  int offset = 0;
+  void changeOffSet(bool increase) {
+    offset += increase ? 30 : -30;
+    notifyListeners();
+  }
+
   //searching
   final TextEditingController controller = TextEditingController();
   var searchList = [];

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:path_task/core/core_shelf.dart';
 import 'package:path_task/screen/detail_page/model/comic_model.dart';
 import 'package:path_task/screen/detail_page/viewModel/detail_view_model.dart';
 
@@ -36,21 +37,25 @@ class ComicsWidget extends ConsumerWidget {
     );
   }
 
-  SizedBox comicTileWidget(ComicModel model) {
-    return SizedBox(
-      height: 80,
-      child: ListTile(
-        shape: const RoundedRectangleBorder(
-            side: BorderSide(
-          color: Colors.white,
-        )),
-        leading: Image.network(model.photoUrl!, fit: BoxFit.cover),
-        title: Text(model.title!),
-        subtitle: Text(
-          model.description!,
-          overflow: TextOverflow.ellipsis,
+  Padding comicTileWidget(ComicModel model) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: SizedBox(
+        height: 80,
+        child: ListTile(
+          shape: const RoundedRectangleBorder(
+              side: BorderSide(
+            color: Colors.white,
+          )),
+          leading: Image.network(model.photoUrl!, fit: BoxFit.cover),
+          title: Text(model.title!),
+          subtitle: Text(
+            model.description!,
+            style: TextStyle(color: Colors.grey.shade400),
+            overflow: TextOverflow.ellipsis,
+          ),
+          trailing: Text(model.date.toString(), style: Theme.of(GlobalVars.context!).textTheme.subtitle2),
         ),
-        trailing: Text(model.date.toString()),
       ),
     );
   }
