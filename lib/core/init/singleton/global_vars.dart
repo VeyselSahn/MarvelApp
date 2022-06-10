@@ -1,5 +1,4 @@
-import 'package:path_task/component/component_shelf.dart';
-
+import '../../../component/component_shelf.dart';
 import '../../core_shelf.dart';
 
 class GlobalVars {

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path_task/core/core_shelf.dart';
-import 'package:path_task/screen/detail_page/model/comic_model.dart';
-import 'package:path_task/screen/detail_page/viewModel/detail_view_model.dart';
+
+import '../../../core/core_shelf.dart';
+import '../model/comic_model.dart';
+import '../viewModel/detail_view_model.dart';
 
 class ComicsWidget extends ConsumerWidget {
   final int characterID;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path_task/core/core_shelf.dart';
-import 'package:path_task/screen/home_page/viewModel/home_view_model.dart';
+import '../../../core/core_shelf.dart';
+import '../viewModel/home_view_model.dart';
 
 class SearchFormWidget extends ConsumerWidget {
   const SearchFormWidget({Key? key}) : super(key: key);

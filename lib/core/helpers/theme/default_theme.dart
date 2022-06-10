@@ -16,7 +16,8 @@ var defaultTheme = ThemeData(
           color: Colors.white,
           fontSize: 15,
           fontWeight: FontWeight.w600,
-        )),
+        ),
+        headline5: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600)),
     //snackbar
     snackBarTheme: const SnackBarThemeData(
       backgroundColor: Color.fromRGBO(226, 54, 54, 1),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path_task/screen/detail_page/component/comics_widget.dart';
-import 'package:path_task/screen/home_page/model/character_model.dart';
+import '../../../component/widgets/appbar.dart';
+import '../component/comics_widget.dart';
+import '../../home_page/model/character_model.dart';
 
 import '../component/define_widget.dart';
 
@@ -12,12 +13,7 @@ class DetailScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'DETAİLS',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 24),
-        ),
-      ),
+      appBar: appBar('DETAİLS'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         child: ListView(

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path_task/core/core_shelf.dart';
-import 'package:path_task/screen/detail_page/view/detail_page.dart';
-import 'package:path_task/screen/home_page/model/character_model.dart';
-import 'package:path_task/screen/home_page/viewModel/home_view_model.dart';
+import '../../../core/core_shelf.dart';
+import '../../../core/init/init_shelf.dart';
+import '../../detail_page/view/detail_page.dart';
+import '../model/character_model.dart';
+import '../viewModel/home_view_model.dart';
 
 class CharacterGridView extends ConsumerWidget {
   final List list;
@@ -29,21 +30,27 @@ Widget characterCard(CharacterModel model) {
       padding: const EdgeInsets.all(8.0),
       child: Container(
           decoration: BoxDecoration(
-            color: Colors.red.shade800,
-            image: DecorationImage(
-                image: NetworkImage(
-                  model.photoUrl!,
-                ),
-                fit: BoxFit.cover),
+            color: Colors.white,
             borderRadius: BorderRadius.circular(10),
           ),
           padding: const EdgeInsets.all(8),
-          child: Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
+          child: Column(
+            children: [
+              Expanded(
+                  flex: 3,
+                  child: Image.network(
+                    model.photoUrl!,
+                    fit: BoxFit.cover,
+                  )),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
                 model.name!,
-                style: TextStyle(color: Colors.red.shade800, fontSize: 20, fontWeight: FontWeight.w600),
-              ))),
+                style: Theme.of(GlobalVars.context!).textTheme.headline5,
+              )
+            ],
+          )),
     ),
   );
 }

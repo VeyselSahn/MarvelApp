@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:path_task/core/core_shelf.dart';
+
+import '../../../core/core_shelf.dart';
 
 Center loadingWidget() {
   return Center(

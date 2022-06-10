@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path_task/core/core_shelf.dart';
-import 'package:path_task/screen/home_page/view/home_screen.dart';
 
-void main() {
+import 'core/core_shelf.dart';
+import 'core/helpers/system_settings/system_settings.dart';
+import 'screen/home_page/view/home_screen.dart';
+
+void main() async {
+  WidgetsFlutterBinding();
   Locators.instance.setUpLocators();
+  await SystemSettings().setSettings();
   runApp(const MyApp());
 }
 

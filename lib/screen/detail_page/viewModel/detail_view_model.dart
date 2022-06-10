@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path_task/core/core_shelf.dart';
-import 'package:path_task/screen/detail_page/model/comic_model.dart';
+
+import '../../../core/core_shelf.dart';
+import '../model/comic_model.dart';
 
 final detailViewModel = ChangeNotifierProvider<DetailViewModel>((ref) {
   return DetailViewModel();

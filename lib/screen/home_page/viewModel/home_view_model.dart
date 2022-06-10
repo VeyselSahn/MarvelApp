@@ -1,9 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path_task/core/core_shelf.dart';
-import 'package:path_task/screen/home_page/model/character_model.dart';
+
+import '../../../core/core_shelf.dart';
+import '../model/character_model.dart';
 
 final homeViewModel = ChangeNotifierProvider<HomeViewModel>((ref) {
   return HomeViewModel();
@@ -72,7 +71,7 @@ class HomeViewModel extends ChangeNotifier {
     searchList.clear();
     for (var element in characters) {
       (element as CharacterModel).toJson().values.forEach((value) {
-        if (value.toString().contains(searchWord)) {
+        if (value.toString().toLowerCase().contains(searchWord.toLowerCase())) {
           searchList.contains(element) ? null : searchList.add(element);
         }
       });

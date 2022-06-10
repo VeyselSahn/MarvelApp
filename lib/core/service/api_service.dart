@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:path_task/core/core_shelf.dart';
+import 'package:path_task/component/component_shelf.dart';
+import '../core_shelf.dart';
 
 class ApiService {
   var base = Dio(BaseOptions(baseUrl: GlobalVars.serviceConst.baseUrl));
@@ -7,6 +8,7 @@ class ApiService {
     try {
       return await base.get(path);
     } catch (e) {
+      snackbar('Error: ' + e.toString());
       throw Exception(e);
     }
   }

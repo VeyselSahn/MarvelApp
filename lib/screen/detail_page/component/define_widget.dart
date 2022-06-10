@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:path_task/core/core_shelf.dart';
-import 'package:path_task/screen/home_page/model/character_model.dart';
+
+import '../../../core/core_shelf.dart';
+import '../../home_page/model/character_model.dart';
 
 class DefineWidget extends StatelessWidget {
   final CharacterModel model;
@@ -51,7 +52,6 @@ class DefineWidget extends StatelessWidget {
             ),
           ],
         ),
-        const Divider()
       ],
     );
   }

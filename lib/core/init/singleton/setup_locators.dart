@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:path_task/component/component_shelf.dart';
+import '../../../component/component_shelf.dart';
 
 import '../../core_shelf.dart';
 
