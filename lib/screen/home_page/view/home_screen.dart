@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:path_task/component/widgets/snackbar.dart';
 import 'package:path_task/core/core_shelf.dart';
 import 'package:path_task/screen/home_page/component/search_form_widget.dart';

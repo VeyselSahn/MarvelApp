@@ -38,23 +38,16 @@ dependencies:
   get_it: ^7.2.0
   #Time Funcs
   intl: ^0.17.0
-  #Modelling
-  json_serializable: ^6.2.0
   #Network
   dio: ^4.0.6
   #State Management
   flutter_riverpod: ^1.0.3
-  #Svg Files
-  flutter_svg: ^1.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   #Scripts running
   build_runner: ^2.1.11
-  #Modelling
-  json_annotation: ^4.5.0
-
   flutter_lints: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
